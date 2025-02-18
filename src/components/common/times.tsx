@@ -13,7 +13,7 @@ export default function Timer({ textColor }: { textColor: string }) {
   }, []);
 
   return (
-    <div className={`text-${textColor} text-lg p-2`}>
+    <div className={`text-${textColor} p-2`}>
       <span>{currentTime}</span>
     </div>
   );
