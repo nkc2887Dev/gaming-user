@@ -10,11 +10,11 @@ export default function Home() {
   // }, []);
 
   return (
-    <>
+    <div className="">
       <Navbar />
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center h-screen">
         <Loader className="mr-[10%]" />
       </div>
-    </>
+    </div>
   );
 }
