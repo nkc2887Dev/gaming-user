@@ -1,20 +1,18 @@
-import Loader from "@/components/common/loader";
 import Navbar from "@/components/common/navbar";
-import { useEffect } from "react";
+import SlidingHeader from "@/components/slider";
 
 export default function Home() {
-  // useEffect(() => {
-  //   fetch("/api/home")
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // }, []);
-
+  const messages = [
+    "1️⃣ Welcome To Our Exchange...",
+    "2️⃣ ICC Champions Trophy Cup TOURNAMENT WINNER Bet Started in Our Exchange....💫💫💫",
+  ];
   return (
     <div className="">
-      <Navbar />
-      <div className="flex items-center justify-center h-screen">
-        <Loader className="mr-[10%]" />
+      <div className="fixed top-0 left-0 w-full z-50">
+        <SlidingHeader messages={messages} />
+        <Navbar />
       </div>
+      <div className="flex items-center justify-center h-screen"></div>
     </div>
   );
 }
