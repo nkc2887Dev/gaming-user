@@ -1,4 +1,4 @@
-import Loader from "@/components/loader";
+import Loader from "@/components/common/loader";
 import Link from "next/link";
 import React from "react";
 

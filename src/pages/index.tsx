@@ -1,13 +1,13 @@
-import Loader from "@/components/loader";
-import Navbar from "@/components/navbar";
+import Loader from "@/components/common/loader";
+import Navbar from "@/components/common/navbar";
 import { useEffect } from "react";
 
 export default function Home() {
-  useEffect(() => {
-    fetch("/api/home")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/home")
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }, []);
 
   return (
     <>
