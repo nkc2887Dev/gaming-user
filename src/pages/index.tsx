@@ -1,4 +1,5 @@
 import Navbar from "@/components/common/navbar";
+import HomePage from "@/components/home";
 import SlidingHeader from "@/components/slider";
 
 export default function Home() {
@@ -7,12 +8,14 @@ export default function Home() {
     "2️⃣ ICC Champions Trophy Cup TOURNAMENT WINNER Bet Started in Our Exchange....💫💫💫",
   ];
   return (
-    <div className="">
+    <div className="min-h-screen">
       <div className="fixed top-0 left-0 w-full z-50">
         <SlidingHeader messages={messages} />
         <Navbar />
       </div>
-      <div className="flex items-center justify-center h-screen"></div>
+      <div className="pt-[120px]">
+        <HomePage />
+      </div>
     </div>
   );
 }
