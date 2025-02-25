@@ -8,6 +8,7 @@ import betsoft from "@/assets/images/company/betsoft.png";
 import spribe from "@/assets/images/company/spribe.png";
 import Evoplay from "@/assets/images/company/Evoplay.png";
 import logo18plus from "@/assets/images/company/logo-18plus.svg";
+import Link from "next/link";
 
 const images = [
   { src: evolution, alt: "Evolution" },
@@ -30,13 +31,15 @@ const Footer = () => {
             key={index}
             className="w-[110px] h-[50px] md:w-[91px] md:h-[43px] lg:w-[110px] lg:h-[50px] last:li"
           >
-            <Image
-              src={src}
-              alt={alt}
-              width={110}
-              height={50}
-              className="w-full h-full object-contain"
-            />
+            <Link href="/#" onClick={(e) => e.preventDefault()}>
+              <Image
+                src={src}
+                alt={alt}
+                width={110}
+                height={50}
+                className="w-full h-full object-contain"
+              />
+            </Link>
           </div>
         ))}
       </div>

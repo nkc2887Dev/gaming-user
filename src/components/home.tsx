@@ -42,7 +42,7 @@ const HomePage = () => {
           ))}
         </div>
         <TopGames />
-        <Sports />
+        <Sports viewmore={true} />
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
           <div className="relative w-full">
             <Image

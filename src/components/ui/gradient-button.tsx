@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -21,7 +20,7 @@ const GradientButton = ({
     <Button
       onClick={onclick}
       {...(size ? { size } : {})}
-      className={`${className} rounded-md font-bold border border-[1.5px] border-[#026473] bg-gradient-to-b from-[#1497AF] to-[#022D44] text-white shadow-md hover:bg-[#017082]`}
+      className={`${className} rounded-md font-bold border border-[1.5px] border-[#026473] bg-gradient-to-b from-[#64D3E5] to-[#126375] text-white shadow-md hover:bg-[#017082]`}
     >
       {redirect ? <Link href={redirect}>{label}</Link> : label}
     </Button>

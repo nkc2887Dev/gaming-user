@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 type Match = {
@@ -53,7 +54,7 @@ const matches: Match[] = [
   },
 ];
 
-export default function Sports() {
+export default function Sports({ viewmore }: { viewmore: boolean }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -86,34 +87,25 @@ export default function Sports() {
       </div>
       <div ref={containerRef} className="whitespace-nowrap custom-scrollbar">
         <table className="w-full">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 text-sm font-bold">
             <tr>
-              <th className="w-[40%] px-4 py-2 text-left text-sm font-medium text-gray-500">
-                Date & Competition
-              </th>
-              <th className="w-[20%] px-1 py-2 text-center text-sm font-medium text-gray-500">
-                1
-              </th>
-              <th className="w-[20%] px-1 py-2 text-center text-sm font-medium text-gray-500">
-                x
-              </th>
-              <th className="w-[20%] px-1 py-2 text-center text-sm font-medium text-gray-500">
-                2
-              </th>
+              <th className="w-[40%] px-4 py-2 text-left"></th>
+              <th className="w-[20%] px-1 py-2 text-center">1</th>
+              <th className="w-[20%] px-1 py-2 text-center">x</th>
+              <th className="w-[20%] px-1 py-2 text-center">2</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-white">
             {matches.map((match) => (
               <tr
                 key={match.id}
                 className="border-t hover:bg-gray-50 text-sm font-bold"
               >
                 <td className="p-2">
-                  <div className="flex flex-col">
-                    <span className="text-gray-600">
-                      {format(match.date, "dd MMM HH:mm")} |
+                  <div className="flex flex-col sm:flex-row">
+                    <span className="">
+                      {format(match.date, "dd MMM HH:mm")} | {match.competition}
                     </span>
-                    <span className="">{`  ${match.competition}`}</span>
                     <span className="inline-flex items-center">
                       {/* <img
                         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WN7js5WYyJKojkp31TC41XVgMC8B9S.png"
@@ -131,10 +123,10 @@ export default function Sports() {
                     <div className="grid grid-cols-2 gap-1 min-w-max">
                       {match.odds.values[index] && (
                         <>
-                          <div className="border-r border-t px-1 py-2 w-full min-w-[60px] max-w-[140px] text-center text-sm  !bg-blue-800 rounded-lg whitespace-nowrap">
+                          <div className="border-r border-t px-1 py-2 w-full min-w-[60px] max-w-[140px] text-center text-sm !bg-[#80C2F1] rounded-lg whitespace-nowrap">
                             {match.odds.values[index][0]}
                           </div>
-                          <div className="border-t px-1 py-2 w-full min-w-[60px] max-w-[140px] text-center text-sm !bg-pink-800 rounded-lg whitespace-nowrap">
+                          <div className="border-t px-1 py-2 w-full min-w-[60px] max-w-[140px] text-center text-sm !bg-[#FBB7C6] rounded-lg whitespace-nowrap">
                             {match.odds.values[index][1]}
                           </div>
                         </>
@@ -147,11 +139,13 @@ export default function Sports() {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-end p-2 border-t">
-        <button className="text-sm text-gray-600 hover:text-gray-900">
-          View More...
-        </button>
-      </div>
+      {viewmore && (
+        <div className="flex justify-end p-2 border-t">
+          <Link className="text-sm text-gray-600 hover:text-gray-900" href="/game/4" >
+            View More...
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
