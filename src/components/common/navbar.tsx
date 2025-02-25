@@ -74,11 +74,11 @@ export default function Navbar() {
               <span>{item.name}</span>
               <Badge position={badgePosition} >
                 <span
-                  className={`${shadingTextForbadge} text-[50%] px-1 rounded-l-sm dark:bg-[#FFFFFF] dark:${shadingTextForbadge}`}
+                  className={`${shadingTextForbadge} text-[50%] px-1 h-4 w-5 rounded-l-sm dark:bg-[#FFFFFF] dark:${shadingTextForbadge}`}
                 >
                   LIVE
                 </span>
-                <span className={`text-[#FFFFFF] text-[75%] px-1 rounded-r-sm dark:bg-[#FF0000] dark:text-[#FFFFFF]`}>
+                <span className={`text-[#FFFFFF] text-[75%] px-1 h-4 w-4 rounded-r-sm dark:bg-[#FF0000] dark:text-[#FFFFFF]`}>
                   {1}
                 </span>
               </Badge>

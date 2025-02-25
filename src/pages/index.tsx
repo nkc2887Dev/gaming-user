@@ -13,7 +13,7 @@ export default function Home() {
         <SlidingHeader messages={messages} />
         <Navbar />
       </div>
-      <div className="pt-[120px]">
+      <div className="pt-[120px] h-[calc(100vh)] overflow-y-auto whitespace-nowrap custom-scrollbar">
         <HomePage />
       </div>
     </div>

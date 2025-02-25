@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,
 body {
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -12,6 +14,7 @@ body {
 
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
+  width: 4px; /* Scrollbar width */
   height: 4px; /* Scrollbar thickness */
 }
 
@@ -20,10 +23,10 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: gray; /* Black scrollbar line */
+  background: rgb(70, 69, 69); /* Black scrollbar line */
   border-radius: 10px; /* Rounded edges */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #333; /* Darker shade on hover */
+  background: #272626; /* Darker shade on hover */
 }
