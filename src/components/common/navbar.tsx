@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useColorShading from "@/components/common/hooks/useColorShading";
 import { Colors } from "@/utils/constants/common";
-import { NavbarMenu } from "@/utils/constants/routes";
+import { NAVBARMENU } from "@/utils/constants/routes";
 import GradientButton from "@/components/ui/gradient-button";
 import { Badge } from "@/components/ui/badge";
 import logo from "@/assets/images/logo.jpg";
@@ -84,7 +84,7 @@ export default function Navbar() {
           ref={containerRef}
           className="flex items-center text-white text-sm font-bold w-full bg-[#045662] whitespace-nowrap custom-scrollbar"
         >
-          {NavbarMenu.map((item, index) => {
+          {NAVBARMENU.map((item, index) => {
             const textColor = [2, 3].includes(index)
               ? `text-${shadingText}`
               : "text-white";

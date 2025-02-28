@@ -1,11 +1,17 @@
-const NavbarMenu = [
-  { name: "Home", symbol: "🏠", link: "/home" },
-  { name: "In-Play", symbol: "▶️", link: "/inplay" },
-  { name: "WPL 2025", symbol: "🏆", link: "/wplwinner" },
-  { name: "ICC Champions", symbol: "🏆", link: "/icc2025" },
-  { name: "Cricket", symbol: "🏏", link: "/game/4" },
-  // { name: "Soccer", symbol: "🏏", link: "/game/1" },
-  // { name: "Tennis", symbol: "🏏", link: "/game/2" },
-];
+export const ROUTES = {
+  HOME: "/home",
+  INPLAY: "/inplay",
+  WPLWINNER: "/wplwinner",
+  ICC2025: "/icc2025",
+  GAME: "/game",
+  LOGIN: "/login",
+  CRICKET: "/game/4",
+};
 
-export { NavbarMenu };
+export const NAVBARMENU = [
+  { name: "Home", symbol: "🏠", link: ROUTES.HOME },
+  { name: "In-Play", symbol: "▶️", link: ROUTES.INPLAY },
+  { name: "WPL 2025", symbol: "🏆", link: ROUTES.WPLWINNER },
+  { name: "ICC Champions", symbol: "🏆", link: ROUTES.ICC2025 },
+  { name: "Cricket", symbol: "🏏", link: ROUTES.CRICKET }
+];

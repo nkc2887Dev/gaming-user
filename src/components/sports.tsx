@@ -81,7 +81,7 @@ export default function Sports({ viewmore }: { viewmore: boolean }) {
     };
   }, []);
   return (
-    <div className="w-full mb-4">
+    <div className="w-full mb-4 overflow-y-auto custom-scroll">
       <div className="bg-cyan-500 px-4 py-2">
         <h2 className="text-lg font-semibold text-white">Cricket</h2>
       </div>
@@ -141,7 +141,10 @@ export default function Sports({ viewmore }: { viewmore: boolean }) {
       </div>
       {viewmore && (
         <div className="flex justify-end p-2 border-t">
-          <Link className="text-sm text-gray-600 hover:text-gray-900" href="/game/4" >
+          <Link
+            className="text-sm text-gray-600 hover:text-gray-900"
+            href="/game/4"
+          >
             View More...
           </Link>
         </div>
