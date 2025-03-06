@@ -1,4 +1,5 @@
 import Sports from "@/components/sports";
+import SportsMenu from "@/components/common/sportsMenu";
 import React from "react";
 
 const Header = [
@@ -17,7 +18,10 @@ const data = [
 
 const ICC2025 = () => {
   return (
-    <div className="relative w-full p-5 flex gap-2">
+    <div className="relative w-full py-4 flex gap-2">
+      <nav className="flex h-full flex-col text-white">
+        <SportsMenu isMobile={true} setIsMenuOpen={() => true} />
+      </nav>
       <div className="w-[70%]">
         <Sports viewmore={false} />
       </div>

@@ -10,16 +10,20 @@ import { useEffect, useRef, useState } from "react";
 // import Toast from "./toast";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import SportsMenu from "@/components/sportsMenu";
+import SportsMenu from "@/components/common/sportsMenu";
 import { cn } from "@/lib/utils";
 import LoginForm from "@/components/login";
+import UserMenu from "./userMenu";
 
 export default function Navbar() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const userbarRef = useRef<HTMLDivElement | null>(null);
   const [badgePosition, setBadgePosition] = useState<"topRight" | "right">(
     "topRight",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -59,12 +63,57 @@ export default function Navbar() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        userbarRef.current &&
+        !userbarRef.current.contains(event.target as Node)
+      ) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    if (isUserMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isUserMenuOpen]);
+
   const shadingText = useColorShading("text-white", Colors, 200);
   const shadingTextForbadge = useColorShading(
     "text-white",
     ["text-red-200", "text-red-500"],
     300,
   );
+
+  const isUserLogin = true;
 
   return (
     <>
@@ -85,13 +134,30 @@ export default function Navbar() {
                 )}
               </Button>
             )}
-            <Image src={logo} alt="Logo" priority className="w-11 h-12" />
+            <Image src={logo} alt="Logo" priority className="w-14 h-15" />
           </div>
-          <GradientButton
-            className="border !border-[#72BBEF] !bg-gradient-to-b !from-[#55BFD1] !to-[#1B6E81] !rounded-xl w-4/3 font-bold text-sm"
-            label="🧑‍🦰 LOG IN"
-            onclick={() => setOpenLoginModal(!openLoginModal)}
-          />
+          {!isUserLogin ? (
+            <GradientButton
+              className="border !border-[#72BBEF] !bg-gradient-to-b !from-[#55BFD1] !to-[#1B6E81] !rounded-xl w-4/3 font-bold text-sm"
+              label="🧑‍🦰 LOG IN"
+              onclick={() => setOpenLoginModal(!openLoginModal)}
+            />
+          ) : (
+            <div className="grid gap-1">
+              <GradientButton
+                className="border !border-[#72BBEF] rounded-lg w-15 py-0"
+                label={"635.00"}
+                size="sm"
+                onclick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              />
+              <GradientButton
+                className="border !border-[#72BBEF] rounded-lg w-15 py-0"
+                label={`Exp:${"0.00"}`}
+                size="sm"
+                onclick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              />
+            </div>
+          )}
         </div>
         <div
           ref={containerRef}
@@ -115,12 +181,12 @@ export default function Navbar() {
                 <span>{item.name}</span>
                 <Badge position={badgePosition}>
                   <span
-                    className={`${shadingTextForbadge} text-[50%] px-1 h-4 w-5 rounded-l-sm dark:bg-[#FFFFFF] dark:${shadingTextForbadge}`}
+                    className={`${shadingTextForbadge} text-[50%] px-1 h-4 w-5 rounded-l-sm bg-[#FFFFFF] ${shadingTextForbadge}`}
                   >
                     LIVE
                   </span>
                   <span
-                    className={`text-[#FFFFFF] text-[75%] px-1 h-4 w-4 rounded-r-sm dark:bg-[#FF0000] dark:text-[#FFFFFF]`}
+                    className={`text-[#FFFFFF] text-[75%] px-1 h-4 w-4 rounded-r-sm bg-[#FF0000] text-[#FFFFFF]`}
                   >
                     {1}
                   </span>
@@ -132,11 +198,12 @@ export default function Navbar() {
       </nav>
       {/* Sidebar Menu */}
       <div
+        ref={sidebarRef}
         className={cn(
           "fixed left-0 w-64 bg-[#008fb3] transition-transform duration-300 z-[999]",
-          "top-20 h-[calc(100vh-3.5rem)]", // Default for desktop
-          "md:top-20 md:h-[calc(100vh-3.5rem)]", // Adjust for tablets
-          "sm:top-20 sm:h-[calc(100vh-3rem)]", // Adjust for smaller screens
+          "top-21 h-[calc(100vh-3.5rem)]", // Default for desktop
+          "md:top-21 md:h-[calc(100vh-3.5rem)]", // Adjust for tablets
+          "sm:top-21 sm:h-[calc(100vh-3rem)]", // Adjust for smaller screens
           isMenuOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
@@ -146,6 +213,17 @@ export default function Navbar() {
             setIsMenuOpen={setIsMenuOpen}
             // isMenuOpen={isMenuOpen}
           />
+        </nav>
+      </div>
+      <div
+        ref={userbarRef}
+        className={cn(
+          "fixed right-0 top-0 w-64 bg-[#045662] transition-transform duration-300 z-[999]",
+          isUserMenuOpen ? "translate-x-0" : "translate-x-full",
+        )}
+      >
+        <nav className="flex h-full flex-col text-white">
+          <UserMenu setIsMenuOpen={setIsUserMenuOpen} />
         </nav>
       </div>
       {openLoginModal && (

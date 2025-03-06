@@ -1,4 +1,4 @@
-const Colors = [
+export const Colors = [
   "red-500",
   "green-500",
   "blue-500",
@@ -7,8 +7,11 @@ const Colors = [
   "pink-500",
 ];
 
-const HeaderSliderText = [
+export const HeaderSliderText = [
   "Enjoy Unmatched Betting Excitement and Access 500+ Casino and Online Games",
 ];
 
-export { Colors, HeaderSliderText };
+export const FooterSliderText = [
+  "1️⃣ Welcome To Our Exchange...",
+  "2️⃣ ICC Champions Trophy Cup TOURNAMENT WINNER Bet Started in Our Exchange....💫💫💫",
+];

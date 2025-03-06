@@ -1,10 +1,9 @@
 "use client";
 
-// import styles from "@/styles/slidingHeader.module.css";
 import { motion } from "framer-motion";
 import { LucideMegaphone } from "lucide-react";
 import { HeaderSliderText } from "@/utils/constants/common";
-import useTimer from "./common/hooks/usetimer";
+import useTimer from "./hooks/usetimer";
 
 const SlidingHeader = () => {
   const timer = useTimer();

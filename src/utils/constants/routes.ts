@@ -13,5 +13,5 @@ export const NAVBARMENU = [
   { name: "In-Play", symbol: "▶️", link: ROUTES.INPLAY },
   { name: "WPL 2025", symbol: "🏆", link: ROUTES.WPLWINNER },
   { name: "ICC Champions", symbol: "🏆", link: ROUTES.ICC2025 },
-  // { name: "Cricket", symbol: "🏏", link: ROUTES.CRICKET }
+  { name: "Cricket", symbol: "🏏", link: ROUTES.CRICKET },
 ];

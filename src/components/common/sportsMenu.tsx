@@ -46,20 +46,24 @@ export default function SportsMenu({ isMobile, setIsMenuOpen }: ISportsMenu) {
     <div className="w-full bg-white text-white min-h-screen md:w-64">
       {isMobile && (
         <div className="">
-          {NAVBARMENU.map(({ name, symbol, link }) => (
-            <Link
-              key={link}
-              className="w-full border-b border-[#159ab3] flex items-center justify-between p-3 text-black hover:bg-[#42C2E2] hover:text-white  transition-colors"
-              href={link}
-              onClick={() => handleClick(link)}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-md font-bold">
-                  {symbol} {name}
-                </span>
-              </div>
-            </Link>
-          ))}
+          {NAVBARMENU.map(({ name, symbol, link }) => {
+            return (
+              name !== "Cricket" && (
+                <Link
+                  key={link}
+                  className="w-full border-b border-[#159ab3] flex items-center justify-between p-3 text-black hover:bg-[#42C2E2] hover:text-white  transition-colors"
+                  href={link}
+                  onClick={() => handleClick(link)}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-md font-bold">
+                      {symbol} {name}
+                    </span>
+                  </div>
+                </Link>
+              )
+            );
+          })}
         </div>
       )}
       {sportsData.map((sport) => (
