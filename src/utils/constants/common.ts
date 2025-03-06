@@ -7,4 +7,8 @@ const Colors = [
   "pink-500",
 ];
 
-export { Colors };
+const HeaderSliderText = [
+  "Enjoy Unmatched Betting Excitement and Access 500+ Casino and Online Games",
+];
+
+export { Colors, HeaderSliderText };

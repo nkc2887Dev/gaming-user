@@ -1,30 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+// import styles from "@/styles/slidingHeader.module.css";
+import { motion } from "framer-motion";
 import { LucideMegaphone } from "lucide-react";
-import styles from "@/styles/slidingHeader.module.css";
+import { HeaderSliderText } from "@/utils/constants/common";
+import useTimer from "./common/hooks/usetimer";
 
-const SlidingHeader = ({ messages }: { messages: string[] }) => {
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsAnimating(true);
-  }, []);
-
+const SlidingHeader = () => {
+  const timer = useTimer();
   return (
-    <div className="bg-[#045662] w-full h-6">
-      <div className="relative flex items-center w-full overflow-hidden">
-        <div
-          className={`text-white gap-8 ${styles.text} ${isAnimating ? styles.animate : ""}`}
-        >
-          {messages.map((message, idx) => (
-            <span key={idx} className="inline-flex items-center gap-1 text-xs">
-              <LucideMegaphone />
-              <span>{message}</span>
-            </span>
-          ))}
-        </div>
+    <div className="bg-[#045662] relative w-full h-8 flex items-center justify-between overflow-hidden text-[#ECECED] text-md">
+      <div className="bg-[#045662] px-2 z-50">
+        <LucideMegaphone />
       </div>
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: "-100%" }}
+        transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+        className="absolute whitespace-nowrap"
+        style={{ whiteSpace: "nowrap", minWidth: "100%" }}
+      >
+        {HeaderSliderText.map((text, index) => (
+          <span key={index} className="mr-4">
+            {text}
+          </span>
+        ))}
+      </motion.div>
+      <div className="bg-[#045662] px-2 z-50">{timer}</div>
     </div>
   );
 };
