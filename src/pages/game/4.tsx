@@ -8,7 +8,7 @@ const Four = () => {
       <div className="relative w-full py-2">
         <Image src={banner} alt="Banner" priority />
       </div>
-      <Sports viewmore={false}/>
+      <Sports viewmore={false} />
     </>
   );
 };

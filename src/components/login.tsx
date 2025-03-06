@@ -7,11 +7,7 @@ import { RefreshCw, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import GradientButton from "@/components/ui/gradient-button";
 import logo from "@/assets/images/logo.jpg";
-
-interface MasterModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { MasterModalProps } from "@/@types/common";
 
 export default function LoginForm({ isOpen, onClose }: MasterModalProps) {
   const [username, setUsername] = useState("");

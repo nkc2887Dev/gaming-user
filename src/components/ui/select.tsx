@@ -1,14 +1,13 @@
 "use client";
 
+import {
+  SelectContentProps,
+  SelectItemProps,
+  SelectTriggerProps,
+  SelectValueProps,
+  SelectProps,
+} from "@/@types/common";
 import { Listbox } from "@headlessui/react";
-import { ChevronDown, CircleChevronDown } from "lucide-react";
-
-interface SelectProps<T> {
-  value: T;
-  onChange: (value: T) => void;
-  children: React.ReactNode;
-  className?: string;
-}
 
 export function Select<T>({
   children,
@@ -21,12 +20,6 @@ export function Select<T>({
       <div className={`${className} relative left-0 w-1/2`}>{children}</div>
     </Listbox>
   );
-}
-
-interface SelectTriggerProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  className?: string;
 }
 
 export function SelectTrigger({
@@ -44,11 +37,6 @@ export function SelectTrigger({
   );
 }
 
-interface SelectContentProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
 export function SelectContent({
   children,
   className = "",
@@ -60,12 +48,6 @@ export function SelectContent({
       {children}
     </Listbox.Options>
   );
-}
-
-interface SelectItemProps<T> {
-  value: T;
-  children: React.ReactNode;
-  className?: string;
 }
 
 export function SelectItem<T>({
@@ -83,10 +65,6 @@ export function SelectItem<T>({
       {children}
     </Listbox.Option>
   );
-}
-
-interface SelectValueProps {
-  placeholder: string;
 }
 
 export function SelectValue({ placeholder }: SelectValueProps) {

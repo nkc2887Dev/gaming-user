@@ -2,12 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-
-interface DialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  children: React.ReactNode;
-}
+import { DialogComponentProps, DialogProps } from "@/@types/common";
 
 export function Dialog({ open, onOpenChange, children }: DialogProps) {
   return (
@@ -26,11 +21,6 @@ export function Dialog({ open, onOpenChange, children }: DialogProps) {
       </div>
     </div>
   );
-}
-
-interface DialogComponentProps {
-  children: React.ReactNode;
-  className?: string;
 }
 
 export function DialogContent({ children, className }: DialogComponentProps) {

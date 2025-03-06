@@ -1,13 +1,6 @@
+import { IGradientButton } from "@/@types/common";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-interface GradientButton {
-  label: string;
-  redirect?: string;
-  className?: string;
-  size?: "lg" | "default" | "sm" | "icon";
-  onclick?: () => void;
-}
 
 const GradientButton = ({
   label,
@@ -15,7 +8,7 @@ const GradientButton = ({
   redirect = "",
   size,
   onclick,
-}: GradientButton) => {
+}: IGradientButton) => {
   return (
     <Button
       onClick={onclick}

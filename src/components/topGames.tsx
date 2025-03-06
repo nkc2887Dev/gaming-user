@@ -11,7 +11,17 @@ import topgame7 from "@/assets/images/topgame7.webp";
 import topgame8 from "@/assets/images/topgame8.webp";
 import topgame9 from "@/assets/images/topgame9.webp";
 
-const images = [topgame1, topgame2, topgame3, topgame4, topgame5, topgame6, topgame7, topgame8, topgame9];
+const images = [
+  topgame1,
+  topgame2,
+  topgame3,
+  topgame4,
+  topgame5,
+  topgame6,
+  topgame7,
+  topgame8,
+  topgame9,
+];
 
 export default function TopGames() {
   return (
@@ -22,7 +32,13 @@ export default function TopGames() {
         <div className="flex whitespace-nowrap animate-marquee">
           {[...images, ...images].map((img, index) => (
             <div key={index} className="flex-shrink-0 mx-1">
-              <Image src={img} alt={`Game ${index + 1}`} width={150} height={80} className="rounded-lg shadow-md" />
+              <Image
+                src={img}
+                alt={`Game ${index + 1}`}
+                width={150}
+                height={80}
+                className="rounded-lg shadow-md"
+              />
             </div>
           ))}
         </div>

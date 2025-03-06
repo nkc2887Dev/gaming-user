@@ -7,17 +7,16 @@ import {
   SquareX,
 } from "lucide-react";
 import { sportsData } from "@/lib/menu-data";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { NAVBARMENU } from "@/utils/constants/routes";
+import Link from "next/link";
+import { ISportsMenu } from "@/@types/common";
 
-interface ISportsMenu {
-  isMobile?: boolean;
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  isMenuOpen: boolean;
-}
-
-export default function SportsMenu({ }: ISportsMenu) {
+export default function SportsMenu({ isMobile, setIsMenuOpen }: ISportsMenu) {
   const [expandedSports, setExpandedSports] = useState<string[]>([]);
   const [expandedTournaments, setExpandedTournaments] = useState<string[]>([]);
+  const router = useRouter();
 
   const toggleSport = (sportId: string) => {
     setExpandedSports((prev) =>
@@ -35,23 +34,50 @@ export default function SportsMenu({ }: ISportsMenu) {
     );
   };
 
-  return (
-    <div className="w-full bg-[#008fb3] text-white min-h-screen md:w-64">
+  const handleClick = (path: string) => {
+    console.log("router.pathname: ", router.pathname);
+    setIsMenuOpen(false);
+    if (router.pathname !== path) {
+      router.push(path);
+    }
+  };
 
+  return (
+    <div className="w-full bg-white text-white min-h-screen md:w-64">
+      {isMobile && (
+        <div className="">
+          {NAVBARMENU.map(({ name, symbol, link }) => (
+            <Link
+              key={link}
+              className="w-full border-b border-[#159ab3] flex items-center justify-between p-3 text-black hover:bg-[#42C2E2] hover:text-white  transition-colors"
+              href={link}
+              onClick={() => handleClick(link)}
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-md font-bold">
+                  {symbol} {name}
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
       {sportsData.map((sport) => (
-        <div key={sport.id} className="border-b border-[#159ab3]">
+        <div key={sport.id} className="border-b border-[#159ab3] text-black ">
           <button
             onClick={() => toggleSport(sport.id)}
-            className="w-full flex items-center justify-between p-3 hover:bg-[#42C2E2] transition-colors"
+            className="w-full flex items-center justify-between p-3 hover:bg-[#42C2E2] hover:text-white transition-colors"
           >
             <div className="flex items-center gap-3">
-              <span className="text-base font-medium">{sport.name}</span>
+              <span className="text-md font-bold">{sport.name}</span>
             </div>
-            <ArrowBigDownDash
-              className={`h-5 w-5 text-white transition-transform ${
-                expandedSports.includes(sport.id) ? "rotate-180" : ""
-              }`}
-            />
+            {sport.tournaments.length > 0 && (
+              <ArrowBigDownDash
+                className={`h-5 w-5 transition-transform ${
+                  expandedSports.includes(sport.id) ? "rotate-180" : ""
+                }`}
+              />
+            )}
           </button>
 
           {expandedSports.includes(sport.id) &&

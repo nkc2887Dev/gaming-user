@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   ];
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className="min-h-screen">
         <div className="fixed top-0 left-0 w-full z-50">
           <SlidingHeader messages={messages} />

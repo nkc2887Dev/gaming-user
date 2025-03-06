@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
-
-interface ToastProps {
-  message: string;
-  type?: "success" | "error" | "info" | "warning";
-  duration?: number;
-  position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
-  onClose?: () => void;
-}
+import { ToastProps } from "@/@types/common";
 
 const bgColors: Record<string, string> = {
   success: "bg-green-500",
@@ -48,7 +41,7 @@ const Toast: React.FC<ToastProps> = ({
         "fixed z-50 flex items-center gap-3 px-4 py-2 text-white rounded shadow-md transition-opacity",
         "min-w-[250px] max-w-sm",
         bgColors[type],
-        positions[position]
+        positions[position],
       )}
     >
       <span>{message}</span>

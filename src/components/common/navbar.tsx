@@ -8,19 +8,20 @@ import { Badge } from "@/components/ui/badge";
 import logo from "@/assets/images/logo.jpg";
 import { useEffect, useRef, useState } from "react";
 // import Toast from "./toast";
-// import { Button } from "../ui/button";
-// import { Menu, X } from "lucide-react";
-import SportsMenu from "../sportsMenu";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import SportsMenu from "@/components/sportsMenu";
 import { cn } from "@/lib/utils";
-import LoginForm from "../login";
+import LoginForm from "@/components/login";
 
 export default function Navbar() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [badgePosition, setBadgePosition] = useState<"topRight" | "right">(
-    "topRight"
+    "topRight",
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -48,11 +49,21 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const shadingText = useColorShading("text-white", Colors, 200);
   const shadingTextForbadge = useColorShading(
     "text-white",
     ["text-red-200", "text-red-500"],
-    300
+    300,
   );
 
   return (
@@ -60,18 +71,20 @@ export default function Navbar() {
       <nav className={`flex items-center flex-col`}>
         <div className="bg-gradient-to-b from-[#033249] to-[#159ab3] text-white p-4 px-5 w-full flex items-center justify-between gap-5">
           <div className="flex items-center gap-4">
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              className="text-white bg-transparent"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button> */}
+            {isMobile && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white bg-transparent"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
+            )}
             <Image src={logo} alt="Logo" priority className="w-11 h-12" />
           </div>
           <GradientButton
@@ -124,14 +137,14 @@ export default function Navbar() {
           "top-20 h-[calc(100vh-3.5rem)]", // Default for desktop
           "md:top-20 md:h-[calc(100vh-3.5rem)]", // Adjust for tablets
           "sm:top-20 sm:h-[calc(100vh-3rem)]", // Adjust for smaller screens
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          isMenuOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         <nav className="flex h-full flex-col text-white">
           <SportsMenu
-            // isMobile={isMobile}
+            isMobile={isMobile}
             setIsMenuOpen={setIsMenuOpen}
-            isMenuOpen={isMenuOpen}
+            // isMenuOpen={isMenuOpen}
           />
         </nav>
       </div>

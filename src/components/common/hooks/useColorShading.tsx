@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useColorShading = (
   defaultColor: string,
   colors: string[],
-  duration: number
+  duration: number,
 ): string => {
   const [textColor, setTextColor] = useState(defaultColor);
 
