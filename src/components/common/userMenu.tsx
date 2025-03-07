@@ -1,5 +1,6 @@
 "use client";
 
+import { USERMENU_ROUTES } from "@/utils/constants/routes";
 import {
   FileText,
   BarChart2,
@@ -36,40 +37,48 @@ export default function UserMenu({
     {
       name: "Account Statement",
       icon: <FileText className="w-5 h-5" />,
-      link: "/account-statement",
+      link: USERMENU_ROUTES.ACCOUNT_STATEMENT,
     },
     {
       name: "Profit Loss Report",
       icon: <BarChart2 className="w-5 h-5" />,
-      link: "/profit-loss",
+      link: USERMENU_ROUTES.PROFIT_LOSS,
     },
     {
       name: "Bet History",
       icon: <History className="w-5 h-5" />,
-      link: "/bet-history",
+      link: USERMENU_ROUTES.BET_HISTORY,
     },
     {
       name: "Unsettled Bet",
       icon: <Clock className="w-5 h-5" />,
-      link: "/unsettled-bet",
+      link: USERMENU_ROUTES.UNSETTLED_BET,
     },
     {
       name: "Set Stake",
       icon: <Settings className="w-5 h-5" />,
-      link: "/set-stake",
+      link: USERMENU_ROUTES.SET_STAKE,
     },
-    { name: "Rules", icon: <List className="w-5 h-5" />, link: "/rules" },
+    {
+      name: "Rules",
+      icon: <List className="w-5 h-5" />,
+      link: USERMENU_ROUTES.RULES,
+    },
     {
       name: "Change Password",
       icon: <Lock className="w-5 h-5" />,
-      link: "/change-password",
+      link: USERMENU_ROUTES.CHANGE_PASSWORD,
     },
     {
       name: "Results",
       icon: <FileText className="w-5 h-5" />,
-      link: "/results",
+      link: USERMENU_ROUTES.RESULTS,
     },
-    { name: "Logout", icon: <LogOut className="w-5 h-5" />, link: "/logout" },
+    {
+      name: "Logout",
+      icon: <LogOut className="w-5 h-5" />,
+      link: USERMENU_ROUTES.LOGOUT,
+    },
   ];
 
   return (

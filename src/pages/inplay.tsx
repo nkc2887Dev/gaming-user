@@ -1,6 +1,7 @@
 import Sports from "@/components/sports";
 import SportsMenu from "@/components/common/sportsMenu";
 import React from "react";
+import useDevice from "@/components/common/hooks/useDevice";
 
 const Header = [
   { title: "Matched Bet", space: 50 },
@@ -17,15 +18,19 @@ const data = [
 ];
 
 const InPlay = () => {
+  const isMobile = useDevice();
+
   return (
-    <div className="relative w-full py-4 flex gap-2">
-      <nav className="flex h-full flex-col text-white">
-        <SportsMenu isMobile={true} setIsMenuOpen={() => true} />
-      </nav>
-      <div className="w-[70%]">
+    <div className="relative w-full pt-[5vh] flex gap-2 flex-col md:flex-row p-2 md:pt-[5vh]">
+      {!isMobile && (
+        <nav className="flex h-full flex-col text-white">
+          <SportsMenu isMobile={true} setIsMenuOpen={() => true} />
+        </nav>
+      )}
+      <div className="flex-grow basis-[65%] md:basis-[70%]">
         <Sports viewmore={false} />
       </div>
-      <div className="w-[30%] bg-white h-[100vh] overflow-y-auto custom-scroll">
+      <div className="flex-grow basis-[35%] md:basis-[30%] bg-white h-[100vh] overflow-y-auto custom-scroll">
         <div className="px-3 py-2 text-xl text-white !bg-gradient-to-b !from-[#55BFD1] !to-[#1B6E81]">
           Matched Bet
         </div>
