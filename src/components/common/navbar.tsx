@@ -134,7 +134,7 @@ export default function Navbar() {
                 )}
               </Button>
             )}
-            <Image src={logo} alt="Logo" priority className="w-14 h-15" />
+            <Image src={logo} alt="Logo" priority className="w-44 h-15 rounded-xl" />
           </div>
           {!isUserLogin ? (
             <GradientButton
